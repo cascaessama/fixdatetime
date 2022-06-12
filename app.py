@@ -29,6 +29,7 @@ for path, dirs, files in os.walk(input_directory):
 
 			filepath_media_new = filepath_media.rpartition('.')[0]+ "-" + photodate_str + "." + media_extension
 
+			print(filepath_media)
 			if (media_extension.upper() == "JPG") or (media_extension.upper() == "JPEG"):
 				photodate = datetime.datetime.strptime(str(photodate), "%Y-%m-%d %H:%M:%S")
 				photodate = datetime.datetime(photodate.year, photodate.month, photodate.day, photodate.hour, photodate.minute, photodate.second).strftime("%Y:%m:%d %H:%M:%S")
@@ -40,6 +41,7 @@ for path, dirs, files in os.walk(input_directory):
 				piexif.insert(exif_bytes, filepath_media)
 				
 			print(filepath_media_new)
+			os.rename(input_directory + filename, "/media/cascaes/maxHD/json/" + filename)
 			os.rename(filepath_media, filepath_media_new)
 
 # FIM
